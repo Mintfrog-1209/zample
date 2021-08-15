@@ -19,16 +19,7 @@
         android:background="#ffffff"
         android:text="로그인" />
 
-    <Button
-        android:id="@+id/btn_signout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center"
-        android:background="#ffffff"
-        android:text="로그아웃" />
+
 
 
 </LinearLayout>

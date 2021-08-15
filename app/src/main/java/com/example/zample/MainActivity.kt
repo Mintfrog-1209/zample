@@ -12,9 +12,14 @@ import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.firebase.ui.auth.util.ExtraConstants
 import com.google.firebase.auth.ActionCodeSettings
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var auth: FirebaseAuth
+
     private val signInLauncher = registerForActivityResult(
         FirebaseAuthUIActivityResultContract()
     ) { res ->
@@ -29,11 +34,13 @@ class MainActivity : AppCompatActivity() {
             createSignInIntent()
         }
 
-        val buttonSignOut = findViewById<Button>(R.id.btn_signout)
-        buttonSignOut!!.setOnClickListener { // SignInActivity 연결
-            signOut()
-        }
 
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        checkCurrentUser()
     }
 
     private fun createSignInIntent() {
@@ -68,14 +75,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun signOut() {
-        // [START auth_fui_signout]
-        AuthUI.getInstance()
-            .signOut(this)
-            .addOnCompleteListener {
-                // ...
-            }
-        // [END auth_fui_signout]
+    private fun checkCurrentUser() {
+        // [START check_current_user]
+        val user = Firebase.auth.currentUser
+        if (user != null) {
+            val intent = Intent(this, FirstActivity::class.java)
+            startActivity(intent)
+            finish()
+        } else {
+            // No user is signed in
+        }
+        // [END check_current_user]
     }
+
+
 
 }
