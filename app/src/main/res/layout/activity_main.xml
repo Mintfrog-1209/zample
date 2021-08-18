@@ -19,7 +19,15 @@
         android:background="#ffffff"
         android:text="로그인" />
 
-
+    <ImageView
+        android:id="@+id/kakao_login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/kakao_login_medium_wide"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </LinearLayout>
